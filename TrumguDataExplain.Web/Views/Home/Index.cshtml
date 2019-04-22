@@ -1,0 +1,147 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>字典表 | 川谷数据字典</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/scripts/plugins/jstree-v3.3.7/themes/proton/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.bootcss.com/datatables/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/common.css" rel="stylesheet" />
+    <link href="~/css/dictionary.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <!--导航-->
+        <div class="collapse navbar-collapse navbar-form" id="nav">
+            <span><img class="logo" src="~/resources/images/logo.png" alt=""></span>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">当前用户:</a>
+                </li>
+                <li>
+                    <a id="UserName">@ViewBag.RealName</a>
+                </li>
+                <li>
+                    <a id="today">@ViewBag.Time</a>
+                </li>
+                <li>
+                    @Html.ActionLink("注销","LogOut")
+                </li>
+            </ul>
+        </div>
+        <!--内容部分-->
+        <div class="row" id="row">
+            <!--左侧z-tree-->
+            <div id="list_left" class="col-md-2 pre-scrollable">
+                <div class="list_wrap">
+                    <p class="lead">数据列表</p>
+                    <div id="jstree">
+                    </div>
+                </div>
+            </div>
+            <!--右侧表格容器-->
+            <div id="list_right" class="col-md-10 pre-scrollable">
+                <div>
+                    <div class="tableWrap">
+                        <table id="tableBaseInfo" class="table table-bordered  table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="lead text-center caption" colspan="2">表基础信息</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 15%">中文名称</td>
+                                    <td style="width: 85%" id="table_name_cn"></td>
+
+                                </tr>
+                                <tr>
+                                    <td>英文名称</td>
+                                    <td id="table_name"></td>
+                                </tr>
+                                <tr>
+                                    <td>表类型</td>
+                                    <td id="table_type"></td>
+                                </tr>
+                                <tr>
+                                    <td>主键</td>
+                                    <td id="key_name"></td>
+                                </tr>
+                                <tr>
+                                    <td>状态</td>
+                                    <td id="table_status"></td>
+                                </tr>
+                                <tr>
+                                    <td>唯一索引</td>
+                                    <td id="unique_index"></td>
+                                <tr>
+                                    <td>说明</td>
+                                    <td id="description"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="tableWrap">
+                        <table id="fieldTable" class="table table-bordered  table-striped table-hover">
+                            <thead>
+                                <tr class="caption">
+                                    <th>序号</th>
+                                    <th data-data="NameEn">字段名</th>
+                                    <th data-data="NameCh">中文名</th>
+                                    <th data-data="FieldType">类型</th>
+                                    <th data-data="FieldLength">长度</th>
+                                    <th data-data="FieldNote">注释</th>
+                                    <th data-data="FieldExplain">说明</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                </div>
+                <div class="introWrap">
+                    <p class="navTitle">川谷金融科技介绍</p>
+                    <p class="introWord">
+                        川谷金融科技成立于2017年，是中国领先的金融软件和技术服务供应商。川谷金融科技聚焦于财富资产管理，致力于为证券、私募、基金、银行等机构提供证券和基金投资的解决方案和服务，为个人投资者提供财富管理和投资服务工具。目前，川谷金融科技拥有约30人的高素质专业队伍，其中研发工程人员约占80%，在金融数据、软件开发实施、技术服务等方面具备优势。川谷金融科技以技术服务为核心，凭借多年金融行业服务经验，以及对资产管理和证券业务的理解，用优质的产品与服务，为客户赋能。
+                    </p>
+                    <img src="~/resources/images/classify.png" class="frameImg" alt="川谷数据库脑图"/>
+                    <p class="navTitle">川谷金融数据库介绍</p>
+                    <p class="introWord">
+                        川谷金融数据库以金融证券数据为核心，内容涵盖基金产品数据、基金公司数据、基金经理数据、指数数据四大方向，并拥有与之对应的丰富衍生数据库。川谷金融数据库具有如下优势与特点：
+                    </p>
+                    <p class="introWord">
+                    <strong> 覆盖全面：</strong> 川谷金融数据库涵盖了全部公私募基金的基本资料、策略类型、净值数据、基金经理数据及其他衍生指标。并根据市场的发展情况，不断进行拓展及优化。
+                    <p class="introWord">
+                        <strong> 准确及时：</strong> 川谷金融数据库聚集了大批专业人员，并采用智能录入与人工录入结合，对基金净值等重要指标，保证及时性和准确性。除了传统的获取数据的方式之外，针对私募数据难以完整获得的问题，川谷通过私募版系统的邮件读取功能及时自动获得私募最新数据，确保基金数据使用的快捷和准确。
+                    </p>
+                    <p class="introWord">
+                        <strong> 特色指标：</strong> 针对各基金产品的不同关注点，川谷金融数据库推出一系列特色指标供用户使用。
+                    </p>
+                    <p class="introWord">
+                        川谷金融数据库将专业知识同创新技术结合，立足于准确及时的金融证券信息，不断向新的领域、新的产品和新的服务战略等方面拓展。
+                    </p>
+                    <img src="~/resources/images/brainPic.png" class="framework" alt="川谷数据库脑图">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.bootcss.com/datatables/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="~/scripts/plugins/jstree-v3.3.7/jstree.min.js"></script>
+<script src="~/scripts/index.js"></script>
